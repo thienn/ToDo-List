@@ -35,7 +35,7 @@ export class HomePage {
       });
       
       */
-     
+
       // New syntax after RXJS 6.
      this.items = this.collection.snapshotChanges()
       .pipe( map(actions => {
@@ -50,6 +50,13 @@ export class HomePage {
         })
       }),
       ) 
+  }
+
+  itemSelected(item: Item) {
+    this.navCtrl.push('DetailPage', {
+      item,
+      itemCollection: this.collection
+    })
   }
 
 }
