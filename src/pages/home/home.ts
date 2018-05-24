@@ -59,4 +59,7 @@ export class HomePage {
     })
   }
 
+  logout() {
+    this.af.firestore.app.auth().signOut();
+  }
 }
