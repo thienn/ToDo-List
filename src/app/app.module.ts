@@ -9,6 +9,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AccountPage } from '../pages/account/account';
 
 //For Firebase configurations
 /* Current setup AF2 5 RC 10 & Firebase 5.0.3*/
@@ -17,7 +18,8 @@ import env from '../app/env';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    AccountPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import env from '../app/env';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AccountPage
   ],
   providers: [
     StatusBar,

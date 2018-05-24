@@ -1,1 +1,21 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->
+<ion-menu [content]="content">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            <button menuClose ion-item *ngFor="let page of pages" (click)="openPage(page)">
+              {{page.title}}
+            </button>
+            <!-- Static button for closing the menu, outside of the array so it always end up at the end after the array no matter how many items -->
+            <button ion-item menuClose>
+                Close Menu
+            </button>
+          </ion-list>
+        </ion-content>
+      </ion-menu>      
+      
+<ion-nav #content [root]="rootPage"></ion-nav>
