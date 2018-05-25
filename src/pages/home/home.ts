@@ -68,5 +68,12 @@ export class HomePage {
       itemCollection: this.collection
     })
   }
-  
+
+  finishToDo(item: Item) {
+    // Update the field status, on the given ID from false to true (Boolean)
+    this.collection.doc(item.id).update({
+      status: true
+    });
+  }
+
 }

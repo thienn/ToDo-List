@@ -40,6 +40,7 @@ export class AddItemPage {
     this.itemCollection.add({
       title: this.itemTitle,
       body: this.itemBody,
+      status: false, // Status for finished or not should be false by default so no need to invoke it before now
       author: this.af.firestore.app.auth().currentUser.email // For filtering feature + when teams are implemented
     } as Item).then(() => {
       // dismiss loading when ready
