@@ -62,4 +62,11 @@ export class HomePage {
   logout() {
     this.af.firestore.app.auth().signOut();
   }
+
+  goToAddItemPage() {
+    this.navCtrl.push('AddItemPage', {
+      itemCollection: this.collection
+    })
+  }
+  
 }

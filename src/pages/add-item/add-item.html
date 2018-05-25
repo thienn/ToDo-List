@@ -1,0 +1,40 @@
+<!--
+  Generated template for the AddItemPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add task</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+          Add task
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-label fixed>Title</ion-label>
+              <ion-input placeholder="Title" [(ngModel)]="itemTitle"></ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-label fixed>Text</ion-label>
+              <ion-textarea rows="5" maxLength="500" placeholder="Text" [(ngModel)]="itemBody"></ion-textarea>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <button ion-button (click)="addItem()">Add task</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+</ion-content>
