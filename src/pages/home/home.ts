@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 import { Item } from '../../models/Item';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
@@ -16,7 +16,7 @@ export class HomePage {
   public collection: AngularFirestoreCollection<Item>;
   public items: Observable<Item[]>;
 
-  constructor(public navCtrl: NavController, private af: AngularFirestore) {
+  constructor(public navCtrl: NavController, private af: AngularFirestore, private toastCtrl: ToastController) {
 
     /* To get all the posts 
     this.collection = af.collection<Item>("items"); // Connecting to the collection in Firebase called items
@@ -82,7 +82,13 @@ export class HomePage {
     // Update the field status, on the given ID from false to true (Boolean)
     this.collection.doc(item.id).update({
       status: true
-    });
+    })
+    .then((response) => {
+      this.toastCtrl.create({
+        message: `Task ${item.title} - finished and moved to archive`,
+        duration: 2500
+      }).present();
+    })
   }
 
 }

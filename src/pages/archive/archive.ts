@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { Item } from '../../models/Item';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
@@ -24,7 +24,7 @@ export class ArchivePage {
   public collection: AngularFirestoreCollection<Item>;
   public items: Observable<Item[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private af: AngularFirestore) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private af: AngularFirestore, private toastCtrl: ToastController) {
     this.collection = af.collection<Item>('items', (ref) => {
       return ref.where('status', '==', true) // Return all the posts where the status field are "true"
     }); 
@@ -49,7 +49,13 @@ export class ArchivePage {
     // Update the field status, on the given ID from false to true (Boolean)
     this.collection.doc(item.id).update({
       status: false
-    });
+    })
+    .then((response) => {
+      this.toastCtrl.create({
+        message: `Task ${item.title} - undone and moved back Todo-list`,
+        duration: 2500
+      }).present();
+    })
   }
 
 
