@@ -45,5 +45,12 @@ export class ArchivePage {
 
   }
 
+  undoToDo(item: Item) {
+    // Update the field status, on the given ID from false to true (Boolean)
+    this.collection.doc(item.id).update({
+      status: false
+    });
+  }
+
 
 }

@@ -22,8 +22,8 @@
            <ion-label>
               {{ item.title }}
            </ion-label>
-           <button ion-button item-end [disabled]="item.status" (click)="finishToDo(item)">
-              <ion-icon name="checkmark"></ion-icon>
+           <button ion-button item-end (click)="undoToDo(item)">
+              <ion-icon name="undo"></ion-icon>
             </button>
       </button> 
     </ion-list>
