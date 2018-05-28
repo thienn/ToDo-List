@@ -22,4 +22,15 @@
           {{ item.body }}
         </ion-card-content>
       </ion-card>
+
+    <ion-card>
+        <button ion-button outline icon-start [disabled]="true">
+          <ion-icon name="hammer"></ion-icon>
+            Edit
+        </button>
+        <button ion-button color="danger" icon-start (click)="deleteItem()">
+          <ion-icon name="trash"></ion-icon>
+            Delete
+        </button>
+    </ion-card>
 </ion-content>

@@ -36,8 +36,9 @@ export class MyApp {
 
       // Array-liste som genererer side menyen, med link til siden. + (Lukk meny på slutten i app.HTML som er utenfor array, så den alltid er på slutten og konstant)
       this.pages = [
-        { title: 'Homescreem', component: HomePage },
-        { title: 'Account', component: AccountPage}
+        { title: 'Homescreen', component: HomePage},
+        { title: 'Account', component: AccountPage},
+        { title: 'Archive', component: 'Unknown' }
       ];
 
 
