@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AccountPage } from '../pages/account/account';
+import { ArchivePage } from '../pages//archive/archive';
 
 //For Firebase configurations
 /* Current setup AF2 5 RC 10 & Firebase 5.0.3*/
@@ -20,7 +21,8 @@ import env from '../app/env';
   declarations: [
     MyApp,
     HomePage,
-    AccountPage
+    AccountPage,
+    ArchivePage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import env from '../app/env';
   entryComponents: [
     MyApp,
     HomePage,
-    AccountPage
+    AccountPage,
+    ArchivePage
   ],
   providers: [
     StatusBar,

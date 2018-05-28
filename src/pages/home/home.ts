@@ -5,7 +5,7 @@ import { Item } from '../../models/Item';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs';
- import { map } from "rxjs/operators";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'page-home',
@@ -18,7 +18,13 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private af: AngularFirestore) {
 
+    /* To get all the posts 
     this.collection = af.collection<Item>("items"); // Connecting to the collection in Firebase called items
+    */
+    // Only show the ones that aren't done (status = false)
+    this.collection = af.collection<Item>('items', (ref) => {
+      return ref.where('status', '==', false) // Return all the posts where the status field are "true"
+    }); 
 
     /* Pre RXJS 6. For reference
     this.items = this.collection.snapshotChanges() // With Observable for realtime look for changes.

@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { AccountPage } from '../pages/account/account';
+import { ArchivePage } from '../pages/archive/archive';
+
 import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
@@ -38,7 +40,7 @@ export class MyApp {
       this.pages = [
         { title: 'Homescreen', component: HomePage},
         { title: 'Account', component: AccountPage},
-        { title: 'Archive', component: 'Unknown' }
+        { title: 'Archive', component: ArchivePage }
       ];
 
 

@@ -23,7 +23,8 @@
     <button ion-item *ngFor="let item of items | async" (click)="itemSelected(item)">
       <ion-label>
         <!-- Currently add done to tag if it's true, false then nothing (option 2) -->
-          {{ item.title }} {{ item.status ? '(done)' : '' }}
+          <!-- For later usage: {{ item.title }} {{ item.status ? '(done)' : '' }} -->
+          {{ item.title }}
       </ion-label>
       <!-- TODO:: Change so you don't go into details when button is clicked -->
 
