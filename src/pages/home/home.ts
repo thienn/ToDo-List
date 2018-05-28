@@ -75,7 +75,10 @@ export class HomePage {
     })
   }
 
-  finishToDo(item: Item) {
+  finishToDo(item: Item, event: Event) {
+    // https://forum.ionicframework.com/t/button-inside-a-button-ionic2/53688/7 for stopping the outer layer of button (Send to detailpage after clicking done)
+    // Theory: stopPropagation stops the event from bubbling up the event chain.
+    event.stopPropagation();
     // Update the field status, on the given ID from false to true (Boolean)
     this.collection.doc(item.id).update({
       status: true

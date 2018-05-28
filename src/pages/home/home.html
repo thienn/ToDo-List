@@ -34,7 +34,7 @@
       <!-- Theory: https://angular.io/guide/template-syntax#a-new-mental-model for the Angular Binding of HTML tags as it got the "disabled"=false by default, so binding it to item.status will
       turn "disabled"= true when status of item.status = true. So the property of disabled follows the status of item.status due to the binding. Therefore, if we in any way change item.status back to false
       the "disabled" will follow and be "false" again too -->
-      <button ion-button item-end [disabled]="item.status" (click)="finishToDo(item)">
+      <button ion-button item-end [disabled]="item.status" (click)="finishToDo(item, $event)">
         <ion-icon name="checkmark"></ion-icon>
       </button>
 
