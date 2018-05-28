@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 
 import { Item } from '../../models/Item';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -20,7 +20,7 @@ export class DetailPage {
   public item: Item;
   public itemCollection: AngularFirestoreCollection<Item>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, private alertCtrl: AlertController) {
     // Connect itemCollection to the collection we get from parameters from previous page
     this.itemCollection = navParams.get('itemCollection');
     // Connect item variable to the item that got sent like collection
@@ -33,22 +33,41 @@ export class DetailPage {
   }
 
   deleteItem() {
-    this.itemCollection.doc(this.item.id).delete()
-      .then((reponse) => {
-        this.toastCtrl.create({
-          message: "Task deleted - " + this.item.title,
-          duration: 2500
-        }).present();
-
-        this.navCtrl.pop();
-      })
-      .catch(error => {
-        this.toastCtrl.create({
-          message: "Error with deleting: " + error,
-          duration: 2500
-        }).present();
-        this.navCtrl.pop();
-      })
+    let alert = this.alertCtrl.create({
+      title: 'You are about to delete a task permanently',
+      message: `Are you sure you want to delete task ${this.item.title}?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.itemCollection.doc(this.item.id).delete()
+            .then((reponse) => {
+              this.toastCtrl.create({
+                message: `Task ${this.item.title} deleted`,
+                duration: 2500
+              }).present();
+      
+              this.navCtrl.pop();
+            })
+            .catch(error => {
+              this.toastCtrl.create({
+                message: `Error with deleting: ${error}`,
+                duration: 2500
+              }).present();
+              this.navCtrl.pop();
+            })
+          }
+        }
+      ]
+    });
+    alert.present();
   } 
 
 }
