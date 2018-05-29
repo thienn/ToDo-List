@@ -14,9 +14,10 @@
 
 
 <ion-content padding>
+  <!--
     <ion-card>
         <ion-card-header>
-          Add task
+          Add task - Title and description
         </ion-card-header>
         <ion-card-content>
           <ion-grid>
@@ -37,4 +38,23 @@
           </ion-grid>
         </ion-card-content>
       </ion-card>
+      -->
+    
+          <ion-list>
+      
+            <ion-item>
+              <ion-label floating>Title</ion-label>
+              <ion-input type="text" [(ngModel)]="itemTitle"></ion-input>
+            </ion-item>
+      
+            <ion-item>
+              <ion-label floating>Description</ion-label>
+              <ion-textarea rows="2" maxLength="500" type="text" [(ngModel)]="itemBody"></ion-textarea>
+            </ion-item>     
+            
+          </ion-list>
+          
+          <div padding>
+              <button ion-button (click)="addItem()">Add task</button>
+          </div>
 </ion-content>
